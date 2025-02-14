@@ -1,3 +1,4 @@
+
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
@@ -92,4 +93,114 @@
   100% {
     opacity: 0.3;
   }
+=======
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$background-color: #f4f4f4;
+$button-color: #e74c3c;
+$text-color: #333;
+$white: #fff;
+
+// General Styles
+body {
+    font-family: Arial, sans-serif;
+    background: $background-color;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+// Business Model Selection
+h2 {
+    color: $primary-color;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+button {
+    display: block;
+    width: 80%;
+    max-width: 300px;
+    padding: 12px;
+    margin: 10px auto;
+    border: none;
+    border-radius: 5px;
+    background: $button-color;
+    color: $white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+        background: darken($button-color, 10%);
+    }
+}
+
+// Traditional and AI Sections
+.traditional, .ai {
+    width: 90%;
+    max-width: 600px;
+    background: $white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: center;
+}
+
+// Traditional Business Model List
+.traditional ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+
+    li {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        padding-left: 20px;
+        font-weight: normal;
+
+        li {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+// AI Section
+#question-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+// Transition Message
+.transition-message {
+    margin-top: 20px;
+    padding: 15px;
+    background: $secondary-color;
+    color: $white;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+}
+
+// Summary Section
+.summary {
+    margin-top: 30px;
+    padding: 20px;
+    background: lighten($secondary-color, 10%);
+    color: $white;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center;
 }
