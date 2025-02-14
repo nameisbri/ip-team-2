@@ -1,0 +1,240 @@
+[
+  {
+    "ObjectId": "tacos-office-high-budget",
+    "selections": ["products/tacos", "Office Workers", "high budget"],
+    "logoURL": "../../",
+    "slogan": "Fueling Office Days, One Taco at a Time!",
+    "businessName": "Taco Tempo",
+    "sampleAds": [
+      {
+        "adTitle": "Busy Workday? We've Got Your Lunch Covered!",
+        "adDescription": "Say goodbye to boring lunches and hello to fresh, delicious tacos made with premium ingredients – delivered straight to your office or ready for pick-up in minutes! 🔥 Why Choose Taco Tempo? ✅ Fresh & Fast: Handcrafted tacos with fresh ingredients, ready in no time 💼 Office-Friendly: Perfect for quick breaks or team lunches 🌱 Customizable Options: Vegan, gluten-free, and protein-packed choices",
+        "adImageURL": "https://example.com/taco_tempo_ad.jpg"
+      }
+    ],
+    "finalResults": {
+      "recommendedStrategy": "Target office workers with lunch specials and delivery.",
+      "targetAudience": "Office Workers in downtown core",
+      "keyMessage": "Premium tacos for a productive workday.",
+      "pricingStrategy": "$8 - $12 per meal, with upsells",
+      "dailySalesGoal": "100 meals/day ($10 avg. per meal) → $1,000/day revenue",
+      "operatingCosts": "$150 - $300/day (including food, wages, and overhead)",
+      "breakEvenPoint": "8-12 months",
+      "setupCost": "$25,000 - $35,000"
+    }
+  },
+  {
+    "ObjectId": "tacos-office-low-budget",
+    "selections": ["products/tacos", "Office Workers", "low budget"],
+    "logoURL": "https://example.com/taco_sprint_logo.png",
+    "slogan": "Fast. Fresh. Affordable.",
+    "businessName": "Taco Sprint",
+    "sampleAds": [
+      {
+        "adTitle": "Craving a Delicious, Affordable Lunch? Look No Further!",
+        "adDescription": "Introducing Taco Sprint – your go-to spot for quick, tasty, and budget-friendly tacos made fresh every day! Whether you’re grinding through deadlines or need a delicious mid-day pick-me-up, we’ve got you covered. ✅ $8 Tacos – Big flavor without breaking the bank ⏱️ Speedy Service – In and out in minutes🌱 Fresh Ingredients – Quality you can taste in every bite",
+        "adImageURL": "https://example.com/taco_sprint_ad.jpg"
+      }
+    ],
+    "finalResults": {
+      "recommendedStrategy": "Focus on affordability and speed for office workers.",
+      "targetAudience": "Office Workers seeking quick and cheap lunch",
+      "keyMessage": "Delicious and affordable tacos fast!",
+      "pricingStrategy": "$8 - $12 per meal, with upsells",
+      "dailySalesGoal": "100 meals/day ($10 avg. per meal) → $1,000/day revenue",
+      "operatingCosts": "$150 - $300/day",
+      "breakEvenPoint": "4-6 months",
+      "setupCost": "$12,000 - $15,000"
+    }
+  },
+  {
+    "ObjectId": "tacos-families-high-budget",
+    "selections": ["products/tacos", "families", "high budget"],
+    "logoURL": "https://example.com/taco_haven_logo_high.png",
+    "slogan": "Where Every Meal Feels Like Home!",
+    "businessName": "Taco Haven",
+    "sampleAds": [],
+    "finalResults": {
+      "recommendedStrategy": "Family-friendly atmosphere and meal deals.",
+      "targetAudience": "Families",
+      "keyMessage": "Tacos the whole family will love.",
+      "pricingStrategy": "$6 - $10 per meal, with upsells",
+      "dailySalesGoal": "80 meals/day ($8 avg. per meal) → $640/day revenue",
+      "operatingCosts": "$150 - $250/day",
+      "breakEvenPoint": "9-12 months",
+      "setupCost": "$25,000 - $35,000"
+    }
+  },
+  {
+    "ObjectId": "tacos-families-low-budget",
+    "selections": ["products/tacos", "families", "low budget"],
+    "logoURL": "https://example.com/taco_familia_logo.png",
+    "slogan": "Affordable Family Fun with Tacos!",
+    "businessName": "Taco Familia",
+    "sampleAds": [],
+    "finalResults": {
+      "recommendedStrategy": "Partner with local schools and family attractions.",
+      "targetAudience": "Families on a budget",
+      "keyMessage": "Tacos for the whole family without breaking the bank.",
+      "pricingStrategy": "$6 - $10 per meal, with upsells",
+      "dailySalesGoal": "80 meals/day ($8 avg. per meal) → $640/day revenue",
+      "operatingCosts": "$150 - $250/day",
+      "breakEvenPoint": "5-7 months",
+      "setupCost": "$12,000 - $15,000"
+    }
+  },
+  {
+    "ObjectId": "catsitting-professionals-high-budget",
+    "selections": ["products/catsitting", "professionals", "high budget"],
+    "logoURL": "https://example.com/luxurypaws.png",
+    "slogan": "Peace of Mind for Your Precious Feline",
+    "businessName": "Luxury Paws",
+    "sampleAds": [],
+    "finalResults": {
+      "recommendedStrategy": "Emphasis on trust, security, and pet well-being.",
+      "targetAudience": "Professionals who are concerned about their pets",
+      "keyMessage": "Where every Meal Feels Like Home!",
+      "pricingStrategy": "$30 - $80 per visit, $150 - $300 for overnight stays",
+      "dailySalesGoal": "5+ bookings/day → $300 - $600/day revenue",
+      "operatingCosts": "$150 - $250/day",
+      "breakEvenPoint": "8-12 months",
+      "setupCost": "$30,000 - $50,000"
+    }
+  },
+  {
+    "ObjectId": "catsitting-professionals-low-budget",
+    "selections": ["products/catsitting", "professionals", "low budget"],
+    "logoURL": "https://example.com/comfypaws.png",
+    "slogan": "Professional Cat Care for Busy Professionals",
+    "businessName": "Comfy Paws",
+    "sampleAds": [],
+    "finalResults": {
+      "recommendedStrategy": "Partner with local pet stores and veterinarians.",
+      "targetAudience": "Professionals seeking affordable pet care.",
+      "keyMessage": "Family Fun with Tacos!",
+      "pricingStrategy": "$20 - $50 per visit, $100 - $200 for overnight stays",
+      "dailySalesGoal": "3-5 bookings/day → $150 - $350/day revenue",
+      "operatingCosts": "$100 - $150/day",
+      "breakEvenPoint": "3-6 months",
+      "setupCost": "$5,000 - $10,000"
+    }
+  },
+
+  {
+    "ObjectId": "catsitting-elderly-high-budget",
+    "selections": ["products/catsitting", "elderly", "high budget"],
+    "logoURL": "https://example.com/silverpaws.png",
+    "slogan": "Caring Hands for Your Beloved Cat",
+    "businessName": "Silver Paws",
+    "sampleAds": [],
+    "finalResults": {
+      "recommendedStrategy": "Compassionate, senior-friendly branding emphasizing trust, security, and personalized pet care.",
+      "targetAudience": "Compassionate, senior-friendly care",
+      "keyMessage": "Compassionate, senior-friendly branding emphasizing trust, security, and personalized pet care.",
+      "pricingStrategy": "$35 - $90 per visit, $175 - $350 for overnight stays",
+      "dailySalesGoal": "4+ bookings/day → $300 - $600/day revenue",
+      "operatingCosts": "$150 - $250/day",
+      "breakEvenPoint": "8-12 months",
+      "setupCost": "$30,000 - $50,000"
+    }
+  },
+  {
+    "ObjectId": "catsitting-elderly-low-budget",
+    "selections": ["products/catsitting", "elderly", "low budget"],
+    "logoURL": "https://example.com/friendlypaws.png",
+    "slogan": "Affordable Cat Care for Seniors",
+    "businessName": "Friendly Paws",
+    "sampleAds": [],
+    "finalResults": {
+      "recommendedStrategy": "Targeted marketing partnerships with senior centers and assisted living communities.",
+      "targetAudience": "Seniors seeking affordable cat care.",
+      "keyMessage": "Your Beloved Cat.",
+      "pricingStrategy": "$25 - $60 per visit, $125 - $250 for overnight stays",
+      "dailySalesGoal": "2-4 bookings/day → $100 - $250/day revenue",
+      "operatingCosts": "$100 - $150/day",
+      "breakEvenPoint": "3-6 months",
+      "setupCost": "$5,000 - $10,000"
+    }
+  },
+
+  {
+    "ObjectId": "cleaningservice-busyprofessionals-high-budget",
+    "selections": [
+      "products/cleaningservice",
+      "busyprofessionals",
+      "high budget"
+    ],
+    "logoURL": "https://example.com/primeclean.png",
+    "slogan": "Luxurious Cleaning for a Polished Life",
+    "businessName": "Prime Clean",
+    "sampleAds": [],
+    "finalResults": {
+      "recommendedStrategy": "Emphasis on premium cleaning services with partnerships with luxury apartment complexes.",
+      "targetAudience": "Busy professionals",
+      "keyMessage": "Cleaning for a Polished Life",
+      "pricingStrategy": "$80 - $200 per cleaning session",
+      "dailySalesGoal": "5+ bookings/day → $300 - $600/day revenue",
+      "operatingCosts": "$300 - $500/day",
+      "breakEvenPoint": "9-15 months",
+      "setupCost": "$30,000 - $50,000"
+    }
+  },
+  {
+    "ObjectId": "cleaningservice-busyprofessionals-low-budget",
+    "selections": [
+      "products/cleaningservice",
+      "busyprofessionals",
+      "low budget"
+    ],
+    "logoURL": "https://example.com/speedyclean.png",
+    "slogan": "Quick Cleaning Solutions at Amazing Price",
+    "businessName": "Speedy Clean",
+    "sampleAds": [],
+    "finalResults": {
+      "recommendedStrategy": "Partner with real estate agents and property managers",
+      "targetAudience": "Busy Professionals",
+      "keyMessage": " Solutions at Amazing Price",
+      "pricingStrategy": "$50 - $150 per cleaning session",
+      "dailySalesGoal": "3-5 bookings/day → $250 - $750/day revenue",
+      "operatingCosts": "$150 - $250/day",
+      "breakEvenPoint": "3-6 months",
+      "setupCost": "$8,000 - $15,000"
+    }
+  },
+  {
+    "ObjectId": "cleaningservice-senior-high-budget",
+    "selections": ["products/cleaningservice", "senior", "high budget"],
+    "logoURL": "https://example.com/primeclean.png",
+    "slogan": "Luxurious Cleaning for a Polished Life",
+    "businessName": "Prime Clean",
+    "sampleAds": [],
+    "finalResults": {
+      "recommendedStrategy": "Emphasis on premium cleaning services with partnerships with luxury apartment complexes.",
+      "targetAudience": "seniors",
+      "keyMessage": "Cleaning for a Polished Life",
+      "pricingStrategy": "$50 - $150 per cleaning session",
+      "dailySalesGoal": "5+ bookings/day → $300 - $600/day revenue",
+      "operatingCosts": "$300 - $500/day",
+      "breakEvenPoint": "9-15 months",
+      "setupCost": "$30,000 - $50,000"
+    }
+  },
+  {
+    "ObjectId": "cleaningservice-senior-low-budget",
+    "selections": ["products/cleaningservice", "seniors", "low budget"],
+    "logoURL": "https://example.com/shineclean.png",
+    "slogan": "Safe Cleaning at Great Price",
+    "businessName": "ShineClean",
+    "sampleAds": [],
+    "finalResults": {
+      "recommendedStrategy": "Promotions & Customer Engagement: Discounts for first-time customers and subscription clients.",
+      "targetAudience": "seniors",
+      "keyMessage": "Price",
+      "pricingStrategy": "$50 - $150 per cleaning session",
+      "dailySalesGoal": "3-5 bookings/day → $250 - $750/day revenu",
+      "operatingCosts": "$150 - $250/day",
+      "breakEvenPoint": "3-6 months",
+      "setupCost": "$8,000 - $15,000"
+    }
+  }
+]

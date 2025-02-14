@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppLayout from "./components/AppLayout/AppLayout";
 import IntroSection from "./components/IntroSection/IntroSection";
 import BusinessModel from "./components/BusinessModel/BusinessModel";
 import RoiSection from "./components/RoiSection/RoiSection";
 import MarketingSection from "./components/MarketingSection/MarketingSection";
-import FinalResults from "./components/FinalResults/FinalResults";
+import Finalresults from "./components/finalresults/Finalresults/Finalresults";
 import ChatInterface from "./components/ChatInterface/ChatInterface";
 import "./App.scss";
 

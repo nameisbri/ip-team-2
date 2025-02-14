@@ -1,0 +1,60 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/globals" as *;
+
+.final {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.button-list {
+  display: flex;
+  gap: 24px;
+  &__button {
+    @include button-base;
+    background-color: $primary-color;
+    border: 1px solid $secondary-color;
+    color: #ffffff;
+
+    &--active {
+      background-color: $secondary-color;
+      color: white;
+    }
+    &:hover {
+      background-color: $secondary-color;
+      color: white;
+    }
+  }
+}
+.text {
+  background-color: $background-color;
+  border-radius: $border-radius;
+}
+li {
+  list-style-type: none;
+}
+
+h3 {
+  margin: 0px;
+}
+
+p {
+  margin: 0px;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 50%;
+}
+.text-container {
+  margin: 20px;
+}
+
+button {
+  outline: none;
+}
