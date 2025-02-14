@@ -11,34 +11,89 @@
   &__costs {
     display: flex;
     flex-direction: column;
-    gap: $spacing-unit * 1.5;
+    gap: $spacing-unit * 2;
   }
 
-  &__cost-row {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: $spacing-unit;
-    align-items: center;
-    padding: $spacing-unit;
+  &__cost-item {
     background-color: white;
     border-radius: $border-radius;
+    padding: $spacing-unit * 2;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    h5 {
+      font-size: 1rem;
+      color: $text-color;
+      margin-bottom: $spacing-unit;
+    }
   }
 
-  &__cost-label {
+  &__cost-value {
+    font-family: monospace;
+    font-size: 1.5rem;
     font-weight: 500;
     color: $text-color;
+    margin-bottom: $spacing-unit;
   }
 
-  &__cost-traditional,
-  &__cost-ai {
+  &__cost-period {
+    font-size: 1rem;
+    color: lighten($text-color, 20%);
+    margin-left: $spacing-unit * 0.5;
+  }
+
+  &__cost-breakdown {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      color: lighten($text-color, 20%);
+      font-size: 0.875rem;
+      padding: ($spacing-unit * 0.5) 0;
+      border-bottom: 1px solid lighten($text-color, 40%);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__timeline {
+    background-color: white;
+    border-radius: $border-radius;
+    padding: $spacing-unit * 2;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    h5 {
+      font-size: 1rem;
+      color: $text-color;
+      margin-bottom: $spacing-unit;
+    }
+  }
+
+  &__timeline-value {
     font-family: monospace;
-    text-align: right;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: $text-color;
+    margin-bottom: $spacing-unit;
   }
 
-  &__cost-ai {
-    color: $primary-color;
-    font-weight: 500;
+  &__timeline-breakdown {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      color: lighten($text-color, 20%);
+      font-size: 0.875rem;
+      padding: ($spacing-unit * 0.5) 0;
+      border-bottom: 1px solid lighten($text-color, 40%);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
   }
 
   &__budget-options {
@@ -61,12 +116,12 @@
     transition: all 0.2s ease-in-out;
 
     &--active {
-      background-color: $secondary-color;
+      background-color: lighten($secondary-color, 35%);
       border-color: $primary-color;
     }
 
     &:hover {
-      background-color: $secondary-color;
+      background-color: lighten($secondary-color, 35%);
       transform: translateY(-1px);
     }
   }
@@ -81,6 +136,7 @@
   &__budget-range {
     font-family: monospace;
     color: $primary-color;
+    font-weight: 500;
     margin-bottom: $spacing-unit * 0.5;
   }
 
@@ -89,15 +145,67 @@
     color: $text-color;
   }
 
+  &__details {
+    margin-top: $spacing-unit * 2;
+    padding: $spacing-unit * 2;
+    background-color: white;
+    border-radius: $border-radius;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &__metrics {
+    display: grid;
+    gap: $spacing-unit;
+    margin-bottom: $spacing-unit * 2;
+  }
+
+  &__metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-unit;
+    background-color: lighten($secondary-color, 35%);
+    border-radius: $border-radius;
+
+    span {
+      color: $text-color;
+    }
+
+    strong {
+      color: $primary-color;
+      font-family: monospace;
+    }
+  }
+
   &__next {
     @include button-base;
     background-color: $primary-color;
     color: white;
     width: 100%;
-    margin-top: $spacing-unit;
+    padding: $spacing-unit * 1.5;
+    font-size: 1.125rem;
 
     &:hover {
-      background-color: $primary-color;
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__costs {
+      gap: $spacing-unit;
+    }
+
+    &__cost-item,
+    &__timeline {
+      padding: $spacing-unit;
+    }
+
+    &__budget-button {
+      padding: $spacing-unit;
+    }
+
+    &__details {
+      padding: $spacing-unit;
     }
   }
 }
