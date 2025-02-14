@@ -1,4 +1,4 @@
-# AI Business Strategy Assistant
+# AI Business Consultant
 
 A React application developed as part of the BrainStation Software Engineering bootcamp's Industry Project with Microsoft. This tool helps small business owners explore AI integration opportunities by providing personalized recommendations and cost comparisons.
 
