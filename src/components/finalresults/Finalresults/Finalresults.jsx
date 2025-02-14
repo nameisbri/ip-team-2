@@ -1,8 +1,8 @@
 import "./Finalresults.scss";
 import { useState, useEffect } from "react";
-import tacoSprint from "../../assets/images/professional-lowBudget-advertisement.png";
-import tacoHaven from "../../assets/images/family-highBudget-advertisement.png";
-import summaryData from "../../data/summary.json";
+import tacoSprint from "../../../assets/images/professional-lowBudget-advertisement.png";
+import tacoHaven from "../../../assets/images/family-highBudget-advertisement.png";
+import summaryData from "../../../data/summary.json";
 // import axios from "axios";
 
 function Finalresults() {

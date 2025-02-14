@@ -5,7 +5,7 @@ import IntroSection from "./components/IntroSection/IntroSection";
 import BusinessModel from "./components/BusinessModel/BusinessModel";
 import RoiSection from "./components/RoiSection/RoiSection";
 import MarketingSection from "./components/MarketingSection/MarketingSection";
-import Finalresults from "./pages/Finalresults/Finalresults";
+import Finalresults from "./components/finalresults/Finalresults/Finalresults";
 import ChatInterface from "./components/ChatInterface/ChatInterface";
 
 const CHAT_SEQUENCES = {
