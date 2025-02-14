@@ -1,0 +1,25 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.app-layout {
+  min-height: 100vh;
+  background-color: $background-color;
+
+  &__header {
+    padding: $spacing-unit * 2;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    color: $text-color;
+    margin: 0;
+  }
+
+  &__main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $spacing-unit * 2;
+  }
+}

@@ -1,0 +1,74 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.business-model {
+  &__traditional {
+    color: $text-color;
+  }
+
+  &__description {
+    margin-bottom: $spacing-unit;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__list-item {
+    margin-bottom: $spacing-unit;
+    padding-left: $spacing-unit;
+    position: relative;
+
+    &:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: $primary-color;
+    }
+  }
+
+  &__selection {
+    margin-bottom: $spacing-unit * 2;
+  }
+
+  &__selection-title {
+    font-size: 1.125rem;
+    margin-bottom: $spacing-unit;
+    color: $text-color;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-unit;
+    margin-bottom: $spacing-unit * 2;
+  }
+
+  &__button {
+    @include button-base;
+    background-color: white;
+    border: 1px solid $secondary-color;
+    color: $text-color;
+
+    &--active {
+      background-color: $secondary-color;
+      color: white;
+    }
+
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
+
+  &__next {
+    @include button-base;
+    background-color: $primary-color;
+    color: white;
+    width: 100%;
+
+    &:hover {
+      background-color: $primary-color, 10%;
+    }
+  }
+}
