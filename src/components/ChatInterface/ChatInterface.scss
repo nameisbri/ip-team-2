@@ -1,110 +1,95 @@
-$primary-color: #3498db;
-$secondary-color: #2ecc71;
-$background-color: #f4f4f4;
-$button-color: #e74c3c;
-$text-color: #333;
-$white: #fff;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
-// General Styles
-body {
-    font-family: Arial, sans-serif;
-    background: $background-color;
-    margin: 0;
-    padding: 0;
-}
+.chat-interface {
+  background-color: white;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 
-.container {
+  &__header {
+    padding: $spacing-unit * 1.5;
+    border-bottom: 1px solid $text-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: $text-color;
+  }
+
+  &__section {
+    font-size: 0.875rem;
+    color: $text-color;
+  }
+
+  &__messages {
+    flex-grow: 1;
+    padding: $spacing-unit * 2;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
+    gap: $spacing-unit;
+  }
+
+  &__typing {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    min-height: 100vh;
+    gap: $spacing-unit * 0.5;
+    color: $text-color;
+    font-size: 0.875rem;
+    padding: $spacing-unit;
+  }
+
+  &__typing-dots {
+    animation: typing 1.5s infinite;
+  }
 }
 
-// Business Model Selection
-h2 {
-    color: $primary-color;
-    text-align: center;
-    margin-bottom: 20px;
-}
+.chat-message {
+  display: flex;
+  margin-bottom: $spacing-unit;
 
-button {
-    display: block;
-    width: 80%;
-    max-width: 300px;
-    padding: 12px;
-    margin: 10px auto;
-    border: none;
-    border-radius: 5px;
-    background: $button-color;
-    color: $white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
+  &--ai {
+    justify-content: flex-start;
 
-    &:hover {
-        background: darken($button-color, 10%);
+    .chat-message__bubble {
+      background-color: $secondary-color;
+      border-radius: $border-radius $border-radius $border-radius 0;
     }
-}
+  }
 
-// Traditional and AI Sections
-.traditional, .ai {
-    width: 90%;
-    max-width: 600px;
-    background: $white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    text-align: center;
-}
+  &--user {
+    justify-content: flex-end;
 
-// Traditional Business Model List
-.traditional ul {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-
-    li {
-        font-weight: bold;
-        margin-bottom: 10px;
+    .chat-message__bubble {
+      background-color: $primary-color;
+      color: white;
+      border-radius: $border-radius $border-radius 0 $border-radius;
     }
+  }
 
-    ul {
-        padding-left: 20px;
-        font-weight: normal;
-
-        li {
-            margin-bottom: 5px;
-        }
-    }
+  &__bubble {
+    max-width: 80%;
+    padding: $spacing-unit;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
 }
 
-// AI Section
-#question-section {
-    margin-top: 20px;
-    text-align: center;
-}
-
-// Transition Message
-.transition-message {
-    margin-top: 20px;
-    padding: 15px;
-    background: $secondary-color;
-    color: $white;
-    font-weight: bold;
-    border-radius: 5px;
-    text-align: center;
-}
-
-// Summary Section
-.summary {
-    margin-top: 30px;
-    padding: 20px;
-    background: lighten($secondary-color, 10%);
-    color: $white;
-    font-weight: bold;
-    border-radius: 10px;
-    text-align: center;
+@keyframes typing {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
 }

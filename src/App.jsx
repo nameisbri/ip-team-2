@@ -7,6 +7,7 @@ import RoiSection from "./components/RoiSection/RoiSection";
 import MarketingSection from "./components/MarketingSection/MarketingSection";
 import Finalresults from "./components/finalresults/Finalresults/Finalresults";
 import ChatInterface from "./components/ChatInterface/ChatInterface";
+import "./App.scss";
 
 const CHAT_SEQUENCES = {
   "intro-to-business": [
@@ -34,7 +35,10 @@ const CHAT_SEQUENCES = {
     },
   ],
   "roi-to-marketing": [
-    { type: "ai", content: "Excellent! Those cost savings look promising." },
+    {
+      type: "ai",
+      content: "Excellent! Those cost savings look promising.",
+    },
     {
       type: "ai",
       content:
@@ -60,26 +64,62 @@ const App = () => {
   const [isInChat, setIsInChat] = useState(false);
   const [currentChat, setCurrentChat] = useState(null);
 
+  // Business data state
+  const [businessData, setBusinessData] = useState({
+    targetAudience: null,
+    budgetLevel: null,
+    selectedMarketing: [],
+  });
+
+  // Handle section transitions
   const handleSectionComplete = (nextSection) => {
     const chatKey = `${currentSection}-to-${nextSection}`;
-    setCurrentChat(chatKey);
-    setIsInChat(true);
+
+    if (CHAT_SEQUENCES[chatKey]) {
+      setCurrentChat(chatKey);
+      setIsInChat(true);
+    } else {
+      setCurrentSection(nextSection);
+    }
   };
 
+  // Handle chat completion
   const handleChatComplete = () => {
-    setIsInChat(false);
-    setCurrentSection(currentChat.split("-to-")[1]);
+    if (currentChat) {
+      const nextSection = currentChat.split("-to-")[1];
+      setIsInChat(false);
+      setCurrentSection(nextSection);
+      setCurrentChat(null);
+    }
   };
 
+  // Update business data
+  const handleDataUpdate = (sectionData, nextSection) => {
+    setBusinessData((prev) => ({ ...prev, ...sectionData }));
+    handleSectionComplete(nextSection);
+  };
+
+  // Reset application
+  const handleReset = () => {
+    setBusinessData({
+      targetAudience: null,
+      budgetLevel: null,
+      selectedMarketing: [],
+    });
+    setCurrentSection("intro");
+    setIsInChat(false);
+    setCurrentChat(null);
+  };
+
+  // Render current section
   const renderSection = () => {
-    if (isInChat && currentChat) {
-      const [current, next] = currentChat.split("-to-");
+    if (isInChat && currentChat && CHAT_SEQUENCES[currentChat]) {
       return (
         <ChatInterface
           messages={CHAT_SEQUENCES[currentChat]}
           onComplete={handleChatComplete}
-          currentSection={current}
-          nextSection={next}
+          currentSection={currentSection}
+          nextSection={currentChat.split("-to-")[1]}
         />
       );
     }
@@ -89,14 +129,32 @@ const App = () => {
         return (
           <IntroSection onStart={() => handleSectionComplete("business")} />
         );
+
       case "business":
-        return <BusinessModel onNext={() => handleSectionComplete("roi")} />;
+        return (
+          <BusinessModel onNext={(data) => handleDataUpdate(data, "roi")} />
+        );
+
       case "roi":
-        return <RoiSection onNext={() => handleSectionComplete("marketing")} />;
+        return (
+          <RoiSection
+            targetAudience={businessData.targetAudience}
+            onNext={(data) => handleDataUpdate(data, "marketing")}
+          />
+        );
+
       case "marketing":
         return (
-          <MarketingSection onNext={() => handleSectionComplete("final")} />
+          <MarketingSection
+            targetAudience={businessData.targetAudience}
+            budgetLevel={businessData.budgetLevel}
+            onNext={(data) => handleDataUpdate(data, "final")}
+          />
         );
+
+      case "final":
+        return <FinalResults {...businessData} onRestart={handleReset} />;
+
       default:
         return (
           <IntroSection onStart={() => handleSectionComplete("business")} />
