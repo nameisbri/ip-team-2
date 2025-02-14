@@ -17,3 +17,12 @@ A React application developed as part of the BrainStation Software Engineering b
 ```bash
 npm install
 npm run dev
+
+## Team
+
+- [Cecilia Leung](https://www.linkedin.com/in/cecilialeung05/)
+- [Yan Deng](https://www.linkedin.com/in/yan-deng19960603/)
+- [Gabriela Barreira](https://www.linkedin.com/in/gabcsb/)
+- [Harshika Patel](https://www.linkedin.com/in/harshika-patel-847812250/)
+- [Miny Pham](https://www.linkedin.com/in/minypham/)
+- [Gustavo Ortega](https://www.linkedin.com/in/gustavoortega97/)
