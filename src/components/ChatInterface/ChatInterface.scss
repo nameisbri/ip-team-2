@@ -1,0 +1,95 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.chat-interface {
+  background-color: white;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    padding: $spacing-unit * 1.5;
+    border-bottom: 1px solid $text-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: $text-color;
+  }
+
+  &__section {
+    font-size: 0.875rem;
+    color: $text-color;
+  }
+
+  &__messages {
+    flex-grow: 1;
+    padding: $spacing-unit * 2;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-unit;
+  }
+
+  &__typing {
+    display: flex;
+    align-items: center;
+    gap: $spacing-unit * 0.5;
+    color: $text-color;
+    font-size: 0.875rem;
+    padding: $spacing-unit;
+  }
+
+  &__typing-dots {
+    animation: typing 1.5s infinite;
+  }
+}
+
+.chat-message {
+  display: flex;
+  margin-bottom: $spacing-unit;
+
+  &--ai {
+    justify-content: flex-start;
+
+    .chat-message__bubble {
+      background-color: $secondary-color;
+      border-radius: $border-radius $border-radius $border-radius 0;
+    }
+  }
+
+  &--user {
+    justify-content: flex-end;
+
+    .chat-message__bubble {
+      background-color: $primary-color;
+      color: white;
+      border-radius: $border-radius $border-radius 0 $border-radius;
+    }
+  }
+
+  &__bubble {
+    max-width: 80%;
+    padding: $spacing-unit;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+@keyframes typing {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}

@@ -1,0 +1,32 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.intro-section {
+  @include flex-center;
+  min-height: 60vh;
+  text-align: center;
+
+  &__heading {
+    font-size: 2.5rem;
+    margin-bottom: $spacing-unit * 2;
+    color: $text-color;
+  }
+
+  &__description {
+    font-size: 1.25rem;
+    margin-bottom: $spacing-unit * 3;
+    color: $text-color;
+  }
+
+  &__start-button {
+    @include button-base;
+    background-color: $primary-color;
+    color: white;
+    font-size: 1.125rem;
+    padding: ($spacing-unit * 1.5) ($spacing-unit * 3);
+
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
+}
