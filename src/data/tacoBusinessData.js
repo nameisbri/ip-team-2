@@ -17,6 +17,12 @@ export const TACO_BUSINESS_SCENARIOS = {
           name: "Taco Tempo",
           slogan: "Fueling Office Days, One Taco at a Time!",
           pricing: "$8 - $12 per meal",
+          logo: {
+            primary: "/assets/logos/taco-tempo-primary.svg",
+            secondary: "/assets/logos/taco-tempo-secondary.svg",
+            darkMode: true,
+            style: "elegant",
+          },
           marketing: {
             headline: "Busy Workday? We've Got Your Lunch Covered!",
             description:
@@ -25,6 +31,14 @@ export const TACO_BUSINESS_SCENARIOS = {
               "Fresh & Fast: Handcrafted tacos with fresh ingredients, ready in no time",
               "Office-Friendly: Perfect for quick breaks or team lunches",
               "Customizable Options: Vegan, gluten-free, and protein-packed choices",
+            ],
+            adSamples: [
+              {
+                type: "social",
+                image: "/assets/ads/taco-tempo-social.jpg",
+                headline: "Elevate Your Lunch Break",
+                copy: "Premium tacos delivered to your office",
+              },
             ],
           },
         },
@@ -44,6 +58,12 @@ export const TACO_BUSINESS_SCENARIOS = {
           name: "Taco Sprint",
           slogan: "Fast. Fresh. Affordable.",
           pricing: "$8 - $12 per meal",
+          logo: {
+            primary: "/assets/logos/taco-sprint-primary.svg",
+            secondary: "/assets/logos/taco-sprint-flame.svg",
+            background: "yellow",
+            style: "dynamic",
+          },
           marketing: {
             headline: "Craving a Delicious, Affordable Lunch? Look No Further!",
             description:
@@ -52,6 +72,14 @@ export const TACO_BUSINESS_SCENARIOS = {
               "$8 Tacos – Big flavor without breaking the bank",
               "Speedy Service – In and out in minutes",
               "Fresh Ingredients – Quality you can taste in every bite",
+            ],
+            adSamples: [
+              {
+                type: "social",
+                image: "/assets/ads/taco-sprint-social.jpg",
+                headline: "Quick & Fresh Lunch Options",
+                copy: "Fast service for busy professionals",
+              },
             ],
           },
         },
@@ -76,6 +104,12 @@ export const TACO_BUSINESS_SCENARIOS = {
           name: "Taco Haven",
           slogan: "Where Every Meal Feels Like Home!",
           pricing: "$6 - $10 per meal",
+          logo: {
+            primary: "/assets/logos/taco-haven-primary.svg",
+            secondary: "/assets/logos/taco-haven-icon.svg",
+            style: "friendly",
+            illustration: true,
+          },
           marketing: {
             headline:
               "Welcome to Taco Haven – Tacos the Whole Family Will Love!",
@@ -85,6 +119,14 @@ export const TACO_BUSINESS_SCENARIOS = {
               "Affordable Meals: Tacos starting at just $6",
               "Fresh & Flavorful: Premium ingredients, bold flavors",
               "Family Meal Deal: Get 10% off when you order 3+ meals!",
+            ],
+            adSamples: [
+              {
+                type: "social",
+                image: "/assets/ads/taco-haven-social.jpg",
+                headline: "Family Dinner Made Easy",
+                copy: "Quality time starts with quality food",
+              },
             ],
           },
         },
@@ -104,6 +146,12 @@ export const TACO_BUSINESS_SCENARIOS = {
           name: "Taco Nest",
           slogan: "Bringing Families Together, One Taco at a Time!",
           pricing: "$6 - $10 per meal",
+          logo: {
+            primary: "/assets/logos/taco-nest-primary.svg",
+            secondary: "/assets/logos/taco-nest-icon.svg",
+            style: "playful",
+            background: "red",
+          },
           marketing: {
             headline: "Delicious Tacos. Family-Friendly Prices.",
             description:
@@ -117,6 +165,14 @@ export const TACO_BUSINESS_SCENARIOS = {
               "Classic Beef Fiesta: Savory beef with melty cheese and salsa",
               "Veggie Delight: Grilled veggies, avocado crema, and fresh cilantro",
               "Chicken Chipotle Crunch: Tender chicken with smoky chipotle sauce",
+            ],
+            adSamples: [
+              {
+                type: "social",
+                image: "/assets/ads/taco-nest-social.jpg",
+                headline: "Family Meals Made Easy",
+                copy: "Affordable tacos everyone will love",
+              },
             ],
           },
         },

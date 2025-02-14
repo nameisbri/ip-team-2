@@ -6,11 +6,36 @@ import "./MarketingSection.scss";
 const MarketingSection = ({ targetAudience, budgetLevel, onNext }) => {
   const [selectedElements, setSelectedElements] = useState([]);
   const [scenarioData, setScenarioData] = useState(null);
+  const [tacoLogo, setTacoLogo] = useState("");
+  const [tacoAd, setTacoAd] = useState("");
 
   useEffect(() => {
     if (targetAudience && budgetLevel) {
       const data = getScenarioData(targetAudience, budgetLevel);
       setScenarioData(data);
+
+      // Dynamically import images based on the scenario
+      const loadImages = async () => {
+        try {
+          const logoPath = await import(
+            `../../assets/${targetAudience}-${budgetLevel}-logo.png`
+          );
+          const adPath = await import(
+            `../../assets/${targetAudience}-${budgetLevel}-advertisement.png`
+          );
+          setTacoLogo(logoPath.default);
+          setTacoAd(adPath.default);
+        } catch (error) {
+          console.error("Error loading images:", error);
+          // // Fallback to default images if specific ones are not found
+          // const fallbackLogo = await import(`../../assets/fallback-logo.png`);
+          // const fallbackAd = await import(`../../assets/fallback-ad.png`);
+          // setTacoLogo(fallbackLogo.default);
+          // setTacoAd(fallbackAd.default);
+        }
+      };
+
+      loadImages();
     }
   }, [targetAudience, budgetLevel]);
 
@@ -32,7 +57,7 @@ const MarketingSection = ({ targetAudience, budgetLevel, onNext }) => {
             },
             {
               type: "logo",
-              image: "/api/placeholder/120/120",
+              image: tacoLogo,
               alt: "AI-generated logo concept",
             },
           ]
@@ -81,7 +106,7 @@ const MarketingSection = ({ targetAudience, budgetLevel, onNext }) => {
       examples: [
         {
           type: "social",
-          image: "/api/placeholder/200/200",
+          image: tacoAd,
           content:
             targetAudience === "office-workers"
               ? "🌮 Beat the lunch rush! Order ahead and save 10% on your first order."
@@ -278,7 +303,15 @@ const MarketingSection = ({ targetAudience, budgetLevel, onNext }) => {
                 <strong>60-75%</strong>
               </div>
               <button
-                onClick={() => onNext({ selectedMarketing: selectedElements })}
+                onClick={() =>
+                  onNext({
+                    selectedMarketing: selectedElements,
+                    marketingAssets: {
+                      logo: tacoLogo,
+                      advertisement: tacoAd,
+                    },
+                  })
+                }
                 className="marketing-section__next"
               >
                 Continue to Final Results

@@ -1,332 +1,361 @@
-@use "../../styles/partials/variables" as *;
-@use "../../styles/partials/mixins" as *;
-
 .final-results {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: $spacing-unit * 2;
+  padding: 2rem;
+  gap: 2rem;
 
   &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin-bottom: $spacing-unit * 4;
+    margin-bottom: 2rem;
   }
 
   &__title {
     font-size: 2rem;
-    color: $text-color;
-    margin-bottom: $spacing-unit;
+    color: #333;
+    margin-bottom: 1rem;
   }
 
   &__subtitle {
-    color: $text-color;
     font-size: 1.25rem;
+    color: #666;
     font-style: italic;
   }
 
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: $spacing-unit * 2;
-    margin-bottom: $spacing-unit * 4;
+  &__comparisons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
   }
 
   &__comparison {
-    background-color: white;
-    border-radius: $border-radius;
-    padding: $spacing-unit * 2;
+    flex: 1 1 300px;
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-    &-title {
+    h3 {
       font-size: 1.25rem;
-      color: $text-color;
-      margin-bottom: $spacing-unit * 1.5;
+      color: #333;
+      margin-bottom: 1rem;
     }
+  }
 
-    &-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: $spacing-unit;
-    }
+  &__comparison-content {
+    display: flex;
+    gap: 1rem;
   }
 
   &__traditional,
   &__ai {
+    flex: 1;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+
     h4 {
       font-size: 0.875rem;
-      color: $text-color;
-      margin-bottom: $spacing-unit;
+      color: #666;
+      margin-bottom: 0.5rem;
     }
 
-    span {
-      display: block;
-      font-size: 1.25rem;
-      font-weight: 500;
-      color: $text-color;
-      margin-bottom: $spacing-unit;
+    p {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 0.5rem;
     }
   }
 
   &__improvement {
     display: inline-block;
-    background-color: lighten($primary-color, 45%);
-    color: $primary-color;
-    padding: ($spacing-unit * 0.5) $spacing-unit;
-    border-radius: $border-radius;
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
     font-size: 0.875rem;
     font-weight: 500;
   }
 
-  &__tools {
-    background-color: white;
-    border-radius: $border-radius;
-    padding: $spacing-unit * 2;
-    margin-bottom: $spacing-unit * 4;
+  &__marketing {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     h3 {
       font-size: 1.5rem;
-      color: $text-color;
-      margin-bottom: $spacing-unit * 2;
+      color: #333;
+      margin-bottom: 1.5rem;
     }
   }
 
-  &__tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: $spacing-unit * 2;
+  &__marketing-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  &__marketing-item {
+    flex: 1 1 300px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    padding: 1.5rem;
+
+    h4 {
+      font-size: 1.25rem;
+      color: #333;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__branding,
+  &__campaign,
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__branding-visuals {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+
+    h5 {
+      font-size: 1rem;
+      color: #1976d2;
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  &__branding-logo,
+  &__branding-ad {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+  }
+
+  &__branding-info {
+    p {
+      margin-bottom: 0.5rem;
+
+      strong {
+        color: #1976d2;
+      }
+    }
+  }
+
+  &__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__feature {
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    color: #1976d2;
+  }
+
+  &__menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__menu-item {
+    background: white;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+
+  &__business-summary {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__summary-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  &__summary-item {
+    flex: 1 1 200px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    padding: 1.5rem;
+    text-align: center;
+
+    span {
+      display: block;
+      font-size: 0.875rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    strong {
+      display: block;
+      font-size: 1.25rem;
+      color: #1976d2;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  &__restart {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    background: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: #1565c0;
+    }
+  }
+
+  &__tools {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__tools-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
   }
 
   &__tools-category {
-    &-title {
+    flex: 1 1 300px;
+
+    h4 {
       font-size: 1.25rem;
-      color: $text-color;
-      margin-bottom: $spacing-unit * 1.5;
-      padding-bottom: $spacing-unit;
-      border-bottom: 2px solid $secondary-color;
+      color: #333;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     }
   }
 
   &__tools-list {
     display: flex;
     flex-direction: column;
-    gap: $spacing-unit * 1.5;
+    gap: 1rem;
   }
 
   &__tool {
-    background-color: lighten($secondary-color, 35%);
-    border-radius: $border-radius;
-    padding: $spacing-unit * 1.5;
-    transition: transform 0.2s ease-in-out;
+    background: #f8f9fa;
+    border-radius: 6px;
+    padding: 1.5rem;
+    transition: transform 0.2s;
 
     &:hover {
       transform: translateY(-2px);
     }
-
-    &-header {
-      display: flex;
-      align-items: center;
-      gap: $spacing-unit;
-      margin-bottom: $spacing-unit;
-    }
-
-    &-icon {
-      font-size: 1.5rem;
-      width: 36px;
-      height: 36px;
-      background-color: white;
-      border-radius: 50%;
-      @include flex-center;
-    }
-
-    &-name {
-      font-size: 1.125rem;
-      font-weight: 500;
-      color: $text-color;
-      margin: 0;
-    }
-
-    &-description {
-      color: $text-color;
-      margin-bottom: $spacing-unit;
-      line-height: 1.5;
-    }
-
-    &-usecase {
-      font-size: 0.875rem;
-      color: $text-color;
-      padding-top: $spacing-unit;
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-
-      span {
-        font-weight: 500;
-        color: $primary-color;
-      }
-    }
   }
 
-  &__next-steps {
-    background-color: white;
-    border-radius: $border-radius;
-    padding: $spacing-unit * 2;
-    margin-bottom: $spacing-unit * 4;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-    h3 {
-      font-size: 1.5rem;
-      color: $text-color;
-      margin-bottom: $spacing-unit * 2;
-    }
+  &__tool-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 
-  &__steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: $spacing-unit * 2;
+  &__tool-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: white;
+    border-radius: 50%;
+    font-size: 1.25rem;
   }
 
-  &__step {
-    background-color: lighten($secondary-color, 35%);
-    border-radius: $border-radius;
-    padding: $spacing-unit * 1.5;
-
-    &-header {
-      display: flex;
-      align-items: center;
-      gap: $spacing-unit;
-      margin-bottom: $spacing-unit;
-    }
-
-    &-number {
-      width: 32px;
-      height: 32px;
-      background-color: $primary-color;
-      color: white;
-      border-radius: 50%;
-      @include flex-center;
-      font-weight: 500;
-      font-size: 1rem;
-    }
-
-    &-title {
-      font-size: 1.125rem;
-      color: $text-color;
-      margin: 0;
-    }
-
-    &-description {
-      color: $text-color;
-      margin-bottom: $spacing-unit;
-      line-height: 1.5;
-    }
-
-    &-timeline,
-    &-tools {
-      font-size: 0.875rem;
-      color: $text-color;
-      margin-top: $spacing-unit;
-
-      span {
-        font-weight: 500;
-        color: $primary-color;
-        margin-right: $spacing-unit * 0.5;
-      }
-    }
+  &__tool h5 {
+    font-size: 1.125rem;
+    color: #333;
+    margin: 0;
   }
 
-  &__business-summary {
-    background-color: white;
-    border-radius: $border-radius;
-    padding: $spacing-unit * 2;
-    margin-bottom: $spacing-unit * 4;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-    h3 {
-      font-size: 1.5rem;
-      color: $text-color;
-      margin-bottom: $spacing-unit * 2;
-    }
+  &__tool p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.5;
   }
 
-  &__summary-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: $spacing-unit * 2;
-  }
-
-  &__summary-item {
-    background-color: lighten($secondary-color, 35%);
-    border-radius: $border-radius;
-    padding: $spacing-unit * 1.5;
-    text-align: center;
+  &__tool-usecase {
+    font-size: 0.875rem;
+    color: #666;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 
     span {
-      display: block;
-      font-size: 0.875rem;
-      color: $text-color;
-      margin-bottom: $spacing-unit;
-    }
-
-    strong {
-      display: block;
-      font-size: 1.25rem;
-      color: $primary-color;
-    }
-  }
-
-  &__actions {
-    display: flex;
-    gap: $spacing-unit * 2;
-    justify-content: center;
-    margin-top: $spacing-unit * 4;
-  }
-
-  &__restart,
-  &__download {
-    @include button-base;
-    padding: ($spacing-unit * 1.5) ($spacing-unit * 3);
-    font-size: 1.125rem;
-    min-width: 200px;
-  }
-
-  &__restart {
-    background-color: $secondary-color;
-    color: white;
-
-    &:hover {
-      background-color: darken($secondary-color, 10%);
-    }
-  }
-
-  &__download {
-    background-color: $primary-color;
-    color: white;
-
-    &:hover {
-      background-color: darken($primary-color, 10%);
+      color: #1976d2;
+      font-weight: 500;
+      margin-right: 0.5rem;
     }
   }
 
   @media (max-width: 768px) {
-    padding: $spacing-unit;
+    padding: 1rem;
 
-    &__grid,
-    &__tools-grid,
-    &__steps-grid,
-    &__summary-grid {
-      grid-template-columns: 1fr;
-    }
-
-    &__actions {
+    &__comparison-content {
       flex-direction: column;
     }
 
-    &__restart,
-    &__download {
-      width: 100%;
+    &__marketing-content {
+      flex-direction: column;
     }
 
-    &__comparison-content {
-      grid-template-columns: 1fr;
-      gap: $spacing-unit * 2;
+    &__summary-content {
+      flex-direction: column;
     }
   }
 }
