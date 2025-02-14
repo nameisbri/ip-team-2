@@ -1,8 +1,19 @@
-# React + Vite
+# AI Business Strategy Assistant
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application developed as part of the BrainStation Software Engineering bootcamp's Industry Project with Microsoft. This tool helps small business owners explore AI integration opportunities by providing personalized recommendations and cost comparisons.
 
-Currently, two official plugins are available:
+## Features
+- Business model assessment
+- ROI analysis (traditional vs AI-powered)
+- Marketing strategy recommendations
+- Microsoft AI tool suggestions
+- Interactive chat interface
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- React
+- SCSS
+
+## Setup
+```bash
+npm install
+npm run dev
