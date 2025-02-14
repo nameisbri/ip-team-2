@@ -1,31 +1,93 @@
-// MarketingSection/MarketingSection.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ComparisonLayout from "../ComparisonLayout/ComparisonLayout";
+import { getScenarioData } from "../../data/tacoBusinessData";
 import "./MarketingSection.scss";
 
-const MarketingSection = ({ onNext }) => {
+const MarketingSection = ({ targetAudience, budgetLevel, onNext }) => {
   const [selectedElements, setSelectedElements] = useState([]);
+  const [scenarioData, setScenarioData] = useState(null);
+
+  useEffect(() => {
+    if (targetAudience && budgetLevel) {
+      const data = getScenarioData(targetAudience, budgetLevel);
+      setScenarioData(data);
+    }
+  }, [targetAudience, budgetLevel]);
 
   const marketingElements = [
     {
-      id: "logo",
-      label: "Brand Logo",
-      traditional: "Custom design: $500-2000\nTimeline: 1-2 weeks",
-      aiDriven: "AI-generated options: $50-200\nTimeline: 24-48 hours",
+      id: "branding",
+      label: "Brand Identity",
+      traditional: "Custom design: $2,000-5,000\nTimeline: 2-3 weeks",
+      aiDriven: "AI-generated options: $200-500\nTimeline: 24-48 hours",
+      examples: scenarioData
+        ? [
+            {
+              type: "name",
+              content: scenarioData.branding.name,
+            },
+            {
+              type: "slogan",
+              content: scenarioData.branding.slogan,
+            },
+            {
+              type: "logo",
+              image: "/api/placeholder/120/120",
+              alt: "AI-generated logo concept",
+            },
+          ]
+        : [],
     },
     {
-      id: "businessName",
-      label: "Business Name",
-      traditional: "Brainstorming sessions\nMarket research\nTimeline: 1 week",
-      aiDriven:
-        "AI-powered name generation\nInstant market analysis\nTimeline: 1-2 hours",
+      id: "marketing",
+      label: "Marketing Campaign",
+      traditional: "Agency fees: $3,000-8,000\nTimeline: 2-3 weeks",
+      aiDriven: "AI content creation: $300-800\nTimeline: 2-3 days",
+      examples: scenarioData
+        ? [
+            {
+              type: "campaign",
+              headline: scenarioData.branding.marketing.headline,
+              description: scenarioData.branding.marketing.description,
+              features: scenarioData.branding.marketing.features,
+            },
+          ]
+        : [],
     },
     {
-      id: "slogan",
-      label: "Slogan & Tagline",
-      traditional: "Copywriter fees: $200-500\nRevisions: 3-5 days",
-      aiDriven:
-        "AI copywriting tools\nUnlimited variations\nTimeline: 1-3 hours",
+      id: "menu",
+      label: "Menu Design",
+      traditional: "Designer fees: $500-1,500\nTimeline: 1-2 weeks",
+      aiDriven: "AI design tools: $50-150\nTimeline: 24 hours",
+      examples: scenarioData
+        ? [
+            {
+              type: "menu",
+              pricing: scenarioData.branding.pricing,
+              items: scenarioData.branding.marketing.menuItems || [
+                "Classic Taco",
+                "Specialty Taco",
+                "Veggie Option",
+              ],
+            },
+          ]
+        : [],
+    },
+    {
+      id: "social",
+      label: "Social Media Kit",
+      traditional: "Content creation: $1,000-3,000\nTimeline: 1-2 weeks",
+      aiDriven: "AI-generated content: $100-300\nTimeline: 24-48 hours",
+      examples: [
+        {
+          type: "social",
+          image: "/api/placeholder/200/200",
+          content:
+            targetAudience === "office-workers"
+              ? "🌮 Beat the lunch rush! Order ahead and save 10% on your first order."
+              : "🌮 Family Pack Special: Get 4 tacos, chips & salsa for just $25!",
+        },
+      ],
     },
   ];
 
@@ -37,48 +99,123 @@ const MarketingSection = ({ onNext }) => {
     );
   };
 
-  const renderTraditionalTimeline = () => (
-    <div className="marketing-section__timeline">
-      <h4 className="marketing-section__timeline-title">
-        Traditional Marketing Timeline
-      </h4>
-      <div className="marketing-section__timeline-steps">
-        <div className="marketing-section__timeline-step">
-          <span className="marketing-section__timeline-step-number">1</span>
-          <span className="marketing-section__timeline-step-text">
-            Market Research (2-3 weeks)
-          </span>
-        </div>
-        <div className="marketing-section__timeline-step">
-          <span className="marketing-section__timeline-step-number">2</span>
-          <span className="marketing-section__timeline-step-text">
-            Brand Development (1-2 weeks)
-          </span>
-        </div>
-        <div className="marketing-section__timeline-step">
-          <span className="marketing-section__timeline-step-number">3</span>
-          <span className="marketing-section__timeline-step-text">
-            Asset Creation (2-3 weeks)
-          </span>
-        </div>
-        <div className="marketing-section__timeline-step">
-          <span className="marketing-section__timeline-step-number">4</span>
-          <span className="marketing-section__timeline-step-text">
-            Implementation (1-2 weeks)
-          </span>
+  const renderExamples = (examples) => {
+    if (!examples) return null;
+
+    return (
+      <div className="marketing-section__examples">
+        <h5 className="marketing-section__examples-title">
+          AI-Generated Examples:
+        </h5>
+        <div className="marketing-section__examples-grid">
+          {examples.map((example, index) => {
+            switch (example.type) {
+              case "name":
+              case "slogan":
+                return (
+                  <div key={index} className="marketing-section__example-text">
+                    <strong>
+                      {example.type === "name" ? "Business Name:" : "Slogan:"}
+                    </strong>
+                    <p>{example.content}</p>
+                  </div>
+                );
+              case "logo":
+                return (
+                  <div key={index} className="marketing-section__example-image">
+                    <img src={example.image} alt={example.alt} />
+                  </div>
+                );
+              case "campaign":
+                return (
+                  <div
+                    key={index}
+                    className="marketing-section__example-campaign"
+                  >
+                    <h6 className="marketing-section__campaign-headline">
+                      {example.headline}
+                    </h6>
+                    <p className="marketing-section__campaign-description">
+                      {example.description}
+                    </p>
+                    <div className="marketing-section__campaign-features">
+                      {example.features.map((feature, i) => (
+                        <div key={i} className="marketing-section__feature">
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              case "menu":
+                return (
+                  <div key={index} className="marketing-section__example-menu">
+                    <div className="marketing-section__menu-pricing">
+                      Price Range: {example.pricing}
+                    </div>
+                    <div className="marketing-section__menu-items">
+                      {example.items.map((item, i) => (
+                        <div key={i} className="marketing-section__menu-item">
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              case "social":
+                return (
+                  <div
+                    key={index}
+                    className="marketing-section__example-social"
+                  >
+                    <img src={example.image} alt="Social media post" />
+                    <p>{example.content}</p>
+                  </div>
+                );
+              default:
+                return null;
+            }
+          })}
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <ComparisonLayout
-      title="Marketing & Customer Acquisition Strategy"
+      title="Marketing & Branding Strategy"
       traditional={
         <div className="marketing-section__traditional">
-          {renderTraditionalTimeline()}
-          <div className="marketing-section__cost-note">
-            Average total cost: $5,000 - $10,000
+          <div className="marketing-section__timeline">
+            <h4 className="marketing-section__timeline-title">
+              Traditional Marketing Timeline
+            </h4>
+            <div className="marketing-section__timeline-steps">
+              <div className="marketing-section__timeline-step">
+                <span className="marketing-section__timeline-step-number">
+                  1
+                </span>
+                <span className="marketing-section__timeline-step-text">
+                  Brand Development (2-3 weeks)
+                </span>
+              </div>
+              <div className="marketing-section__timeline-step">
+                <span className="marketing-section__timeline-step-number">
+                  2
+                </span>
+                <span className="marketing-section__timeline-step-text">
+                  Menu & Asset Design (1-2 weeks)
+                </span>
+              </div>
+              <div className="marketing-section__timeline-step">
+                <span className="marketing-section__timeline-step-number">
+                  3
+                </span>
+                <span className="marketing-section__timeline-step-text">
+                  Marketing Campaign Setup (2-3 weeks)
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       }
@@ -89,38 +226,44 @@ const MarketingSection = ({ onNext }) => {
           </h4>
           <div className="marketing-section__elements">
             {marketingElements.map((element) => (
-              <button
+              <div
                 key={element.id}
-                onClick={() => toggleElement(element.id)}
-                className={`marketing-section__element ${
-                  selectedElements.includes(element.id)
-                    ? "marketing-section__element--selected"
-                    : ""
-                }`}
+                className="marketing-section__element-container"
               >
-                <div className="marketing-section__element-header">
-                  <span className="marketing-section__element-label">
-                    {element.label}
-                  </span>
-                  <span className="marketing-section__element-status">
-                    {selectedElements.includes(element.id) ? "✓" : "+"}
-                  </span>
-                </div>
-                <div className="marketing-section__element-comparison">
-                  <div className="marketing-section__element-traditional">
-                    <small>Traditional:</small>
-                    {element.traditional.split("\n").map((line, i) => (
-                      <div key={i}>{line}</div>
-                    ))}
+                <button
+                  onClick={() => toggleElement(element.id)}
+                  className={`marketing-section__element ${
+                    selectedElements.includes(element.id)
+                      ? "marketing-section__element--selected"
+                      : ""
+                  }`}
+                >
+                  <div className="marketing-section__element-header">
+                    <span className="marketing-section__element-label">
+                      {element.label}
+                    </span>
+                    <span className="marketing-section__element-status">
+                      {selectedElements.includes(element.id) ? "✓" : "+"}
+                    </span>
                   </div>
-                  <div className="marketing-section__element-ai">
-                    <small>AI-Driven:</small>
-                    {element.aiDriven.split("\n").map((line, i) => (
-                      <div key={i}>{line}</div>
-                    ))}
+                  <div className="marketing-section__element-comparison">
+                    <div className="marketing-section__element-traditional">
+                      <small>Traditional:</small>
+                      {element.traditional.split("\n").map((line, i) => (
+                        <div key={i}>{line}</div>
+                      ))}
+                    </div>
+                    <div className="marketing-section__element-ai">
+                      <small>AI-Driven:</small>
+                      {element.aiDriven.split("\n").map((line, i) => (
+                        <div key={i}>{line}</div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </button>
+                </button>
+                {selectedElements.includes(element.id) &&
+                  renderExamples(element.examples)}
+              </div>
             ))}
           </div>
 
@@ -134,7 +277,10 @@ const MarketingSection = ({ onNext }) => {
                 <span>Estimated Cost Saved:</span>
                 <strong>60-75%</strong>
               </div>
-              <button onClick={onNext} className="marketing-section__next">
+              <button
+                onClick={() => onNext({ selectedMarketing: selectedElements })}
+                className="marketing-section__next"
+              >
                 Continue to Final Results
               </button>
             </div>

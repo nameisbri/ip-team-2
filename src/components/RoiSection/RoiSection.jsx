@@ -1,87 +1,111 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ComparisonLayout from "../ComparisonLayout/ComparisonLayout";
-import "./ROISection.scss";
+import {
+  calculateTotalTraditionalCosts,
+  getScenarioData,
+} from "../../data/tacoBusinessData";
+import "./RoiSection.scss";
 
-const ROISection = ({ onNext }) => {
+const RoiSection = ({ targetAudience, onNext }) => {
   const [budgetLevel, setBudgetLevel] = useState(null);
+  const [scenarioData, setScenarioData] = useState(null);
+
+  // Get data for both budget levels up front
+  const highBudgetData = targetAudience
+    ? getScenarioData(targetAudience, "high")
+    : null;
+  const lowBudgetData = targetAudience
+    ? getScenarioData(targetAudience, "low")
+    : null;
 
   const budgetOptions = [
     {
       id: "high",
-      label: "Higher Budget",
-      range: "$10,000 - $50,000",
+      label: "Premium Setup",
       description: "Full-service solution with comprehensive AI integration",
+      range: highBudgetData?.setup.range,
+      metrics: highBudgetData?.daily,
     },
     {
       id: "low",
-      label: "Lower Budget",
-      range: "$1,000 - $10,000",
-      description: "Essential AI tools and basic automation",
+      label: "Basic Setup",
+      description: "Essential tools and basic automation",
+      range: lowBudgetData?.setup.range,
+      metrics: lowBudgetData?.daily,
     },
   ];
 
-  const calculateTraditionalCosts = () => ({
-    setup: "$15,000 - $30,000",
-    monthly: "$2,000 - $5,000",
-    timeframe: "3-6 months",
-    roi: "12-18 months",
-  });
+  const traditionalCosts = calculateTotalTraditionalCosts();
 
-  const calculateAICosts = (budget) => {
-    if (budget === "high") {
-      return {
-        setup: "$8,000 - $15,000",
-        monthly: "$1,000 - $2,500",
-        timeframe: "1-2 months",
-        roi: "6-9 months",
-      };
+  useEffect(() => {
+    if (targetAudience && budgetLevel) {
+      const data = getScenarioData(targetAudience, budgetLevel);
+      setScenarioData(data);
     }
-    return {
-      setup: "$2,000 - $5,000",
-      monthly: "$500 - $1,000",
-      timeframe: "2-4 weeks",
-      roi: "3-6 months",
-    };
+  }, [targetAudience, budgetLevel]);
+
+  const handleBudgetSelect = (budget) => {
+    setBudgetLevel(budget);
+    const newData = getScenarioData(targetAudience, budget);
+    setScenarioData(newData);
   };
 
-  const traditionalCosts = calculateTraditionalCosts();
-  const aiCosts = budgetLevel ? calculateAICosts(budgetLevel) : null;
+  const formatMetric = (metric) => {
+    if (!metric) return null;
+    return metric;
+  };
 
-  const CostComparison = ({ label, traditional, ai }) => (
-    <div className="roi-section__cost-row">
-      <span className="roi-section__cost-label">{label}</span>
-      <span className="roi-section__cost-traditional">{traditional}</span>
-      <span className="roi-section__cost-ai">{ai || "—"}</span>
-    </div>
-  );
+  const getMetricsForBudget = (budget) => {
+    const data = budget === "high" ? highBudgetData : lowBudgetData;
+    return data?.daily || null;
+  };
 
   return (
     <ComparisonLayout
-      title="Return on Investment Analysis"
+      title="Cost Analysis"
       traditional={
         <div className="roi-section__traditional">
-          <h4 className="roi-section__subtitle">Traditional Business Costs</h4>
+          <h4 className="roi-section__subtitle">
+            Traditional Taco Business Setup
+          </h4>
           <div className="roi-section__costs">
-            <CostComparison
-              label="Setup Costs"
-              traditional={traditionalCosts.setup}
-              ai={aiCosts?.setup}
-            />
-            <CostComparison
-              label="Monthly Costs"
-              traditional={traditionalCosts.monthly}
-              ai={aiCosts?.monthly}
-            />
-            <CostComparison
-              label="Implementation Time"
-              traditional={traditionalCosts.timeframe}
-              ai={aiCosts?.timeframe}
-            />
-            <CostComparison
-              label="Expected ROI Timeline"
-              traditional={traditionalCosts.roi}
-              ai={aiCosts?.roi}
-            />
+            <div className="roi-section__cost-item">
+              <h5>Initial Investment</h5>
+              <div className="roi-section__cost-value">
+                {traditionalCosts.setupCosts}
+              </div>
+              <ul className="roi-section__cost-breakdown">
+                <li>Location setup and equipment</li>
+                <li>Initial inventory</li>
+                <li>Legal and licensing fees</li>
+                <li>Staff training</li>
+              </ul>
+            </div>
+            <div className="roi-section__cost-item">
+              <h5>Operational Costs</h5>
+              <div className="roi-section__cost-value">
+                {traditionalCosts.monthlyCosts}
+                <span className="roi-section__cost-period">/month</span>
+              </div>
+              <ul className="roi-section__cost-breakdown">
+                <li>Rent and utilities</li>
+                <li>Staff salaries</li>
+                <li>Inventory restocking</li>
+                <li>Marketing expenses</li>
+              </ul>
+            </div>
+            <div className="roi-section__timeline">
+              <h5>Typical Timeline</h5>
+              <p className="roi-section__timeline-value">
+                {traditionalCosts.timeframe}
+              </p>
+              <ul className="roi-section__timeline-breakdown">
+                <li>Business planning: 2-4 weeks</li>
+                <li>Location setup: 4-8 weeks</li>
+                <li>Staff hiring & training: 2-4 weeks</li>
+                <li>Marketing preparation: 2-4 weeks</li>
+              </ul>
+            </div>
           </div>
         </div>
       }
@@ -92,7 +116,7 @@ const ROISection = ({ onNext }) => {
             {budgetOptions.map((option) => (
               <button
                 key={option.id}
-                onClick={() => setBudgetLevel(option.id)}
+                onClick={() => handleBudgetSelect(option.id)}
                 className={`roi-section__budget-button ${
                   budgetLevel === option.id
                     ? "roi-section__budget-button--active"
@@ -112,10 +136,34 @@ const ROISection = ({ onNext }) => {
             ))}
           </div>
 
-          {budgetLevel && (
-            <button onClick={onNext} className="roi-section__next">
-              Continue to Marketing Strategy
-            </button>
+          {budgetLevel && scenarioData && (
+            <div className="roi-section__details">
+              <div className="roi-section__metrics">
+                <div className="roi-section__metric">
+                  <span>Daily Sales Target:</span>
+                  <strong>{formatMetric(scenarioData.daily.sales)}</strong>
+                </div>
+                <div className="roi-section__metric">
+                  <span>Daily Revenue Target:</span>
+                  <strong>{formatMetric(scenarioData.daily.revenue)}</strong>
+                </div>
+                <div className="roi-section__metric">
+                  <span>Operating Costs:</span>
+                  <strong>{formatMetric(scenarioData.daily.costs)}</strong>
+                </div>
+                <div className="roi-section__metric">
+                  <span>Break-even Timeline:</span>
+                  <strong>{formatMetric(scenarioData.setup.breakEven)}</strong>
+                </div>
+              </div>
+
+              <button
+                onClick={() => onNext({ budgetLevel })}
+                className="roi-section__next"
+              >
+                Continue to Marketing Strategy
+              </button>
+            </div>
           )}
         </div>
       }
@@ -123,4 +171,4 @@ const ROISection = ({ onNext }) => {
   );
 };
 
-export default ROISection;
+export default RoiSection;
